@@ -1,0 +1,24 @@
+.navbar-logo {
+  height: 60px;
+  cursor: pointer;
+}
+.navbar {
+  width: 300px;
+  position: fixed;
+  height: 100%;
+  padding: 20px;
+}
+.navbar-menu {
+  list-style: none;
+}
+.navbar-menu li {
+  padding: 10px 0px;
+}
+.navbar-menu a {
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+.navbar-menu a:hover {
+  color: #6a933e;
+}

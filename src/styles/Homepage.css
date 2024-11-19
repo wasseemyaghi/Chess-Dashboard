@@ -1,0 +1,50 @@
+.pagetableofdata {
+  margin-left: 300px;
+  padding: 20px;
+}
+/* style the table  */
+.search-table {
+  margin-top: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 10px;
+  text-align: left;
+  /* border: 1px solid #ddd; */
+  border: 1px solid #6a933e;
+}
+
+.user-table th {
+  /* background-color: #f4f4f4; */
+  background-color: #6a933e;
+}
+.searchandFilter {
+  display: flex;
+  justify-content: space-between;
+}
+.searchinputleft {
+  width: 40%;
+}
+.filterright {
+  width: 40%;
+}
+.filterright select {
+  width: 70%;
+  outline: none;
+  padding: 10px;
+  margin-left: 10px;
+}
