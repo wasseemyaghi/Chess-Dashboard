@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function SearchTableSection({ users }) {
+import Skeleton from "@mui/material/Skeleton";
+export default function SearchTableSection({
+  users,
+  isloading,
+  onTitleChange,
+}) {
   const [searchText, setSearchText] = useState("");
+  const [titledPlayer, settitledPlayer] = useState("GM");
+  console.log(titledPlayer);
   const navigate = useNavigate();
   const filteredUsers =
     searchText.length >= 3
@@ -12,6 +19,11 @@ export default function SearchTableSection({ users }) {
 
   const handleRowClick = (username) => {
     navigate(`/Profilepage/${username}`);
+  };
+  const handleTitleChange = (e) => {
+    const selectedTitle = e.target.value;
+    settitledPlayer(selectedTitle);
+    onTitleChange(selectedTitle);
   };
   return (
     <div className="search-table">
@@ -27,7 +39,7 @@ export default function SearchTableSection({ users }) {
         </div>
         <div className="filterright">
           Filter By
-          <select>
+          <select value={titledPlayer} onChange={handleTitleChange}>
             <option value="GM">GM</option>
             <option value="WGM">WGM</option>
             <option value="IM">IM</option>
@@ -41,29 +53,35 @@ export default function SearchTableSection({ users }) {
           </select>
         </div>
       </div>
-      {filteredUsers.length > 0 ? (
-        <table className="user-table" border="1">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Username</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.map((user) => (
-              <tr
-                key={user.id}
-                onClick={() => handleRowClick(user.username)} // Add click handler
-                style={{ cursor: "pointer" }}
-              >
-                <td>{user.id}</td>
-                <td>{user.username}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {isloading ? (
+        <div>
+          {filteredUsers.length > 0 ? (
+            <table className="user-table" border="1">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredUsers.map((user) => (
+                  <tr
+                    key={user.id}
+                    onClick={() => handleRowClick(user.username)} // Add click handler
+                    style={{ cursor: "pointer" }}
+                  >
+                    <td>{user.id}</td>
+                    <td>{user.username}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No matches for “{searchText}”</p>
+          )}
+        </div>
       ) : (
-        <p>No matches for “{searchText}”</p>
+        <Skeleton variant="rectangular" width={950} height={700} />
       )}
     </div>
   );
