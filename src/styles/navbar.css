@@ -1,15 +1,20 @@
 .navbar-logo {
-  height: 60px;
+  height: 50px;
   cursor: pointer;
 }
 .navbar {
   width: 300px;
   position: fixed;
-  height: 100%;
+  height: 90%;
   padding: 20px;
+  background-color: white;
+  margin: 30px;
+  border-radius: 6px;
 }
 .navbar-menu {
   list-style: none;
+  margin-top: 20px;
+  font-size: 20px;
 }
 .navbar-menu li {
   padding: 10px 0px;

@@ -13,7 +13,6 @@ export default function Profilepage() {
       .then((response) => response.json())
       .then((data) => {
         setProfileData(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -42,7 +41,24 @@ export default function Profilepage() {
   return (
     <div className="container">
       <div className="profile-page">
-        <div className="profile-page-image">
+        <div className="cards">
+          <div className="card-box1">
+            {profileData.avatar ? (
+              <img
+                src={profileData.avatar}
+                alt={`${profileData.username}'s avatar`}
+              />
+            ) : (
+              <img src={svg} alt="Default profile" className="default-image" />
+            )}
+          </div>
+          <div className="card-box2">progress</div>
+          <div className="card-box3">time tracker</div>
+          <div className="card-box4">time tracker</div>
+          <div className="card-box5">time tracker</div>
+          <div className="card-box6">time tracker</div>
+        </div>
+        {/* <div className="profile-page-image">
           {profileData.avatar ? (
             <img
               src={profileData.avatar}
@@ -72,7 +88,7 @@ export default function Profilepage() {
               <p>{profileData.followers}</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
