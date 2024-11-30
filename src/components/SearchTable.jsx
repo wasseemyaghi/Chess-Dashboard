@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
+
 export default function SearchTableSection({
   users,
   isloading,
