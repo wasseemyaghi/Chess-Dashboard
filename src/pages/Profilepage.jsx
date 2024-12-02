@@ -52,7 +52,9 @@ export default function Profilepage() {
               <img src={svg} alt="Default profile" className="default-image" />
             )}
           </div>
-          <div className="card-box2">progress</div>
+          <div className="card-box2">
+            {/* <img src="https://flagsapi.com/CN/flat/64.png" /> */}
+          </div>
           <div className="card-box3">time tracker</div>
           <div className="card-box4">time tracker</div>
           <div className="card-box5">time tracker</div>

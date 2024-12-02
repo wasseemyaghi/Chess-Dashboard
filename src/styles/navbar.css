@@ -3,12 +3,12 @@
   gap: 20px;
 }
 .navbar-logo-img {
-  height: 50px;
+  height: 108px;
   cursor: pointer;
 }
 .navbar-logo-title {
   font-family: "Jaro", sans-serif;
-  font-size: 30px;
+  font-size: 40px;
 }
 .navbar {
   width: 360px;
@@ -26,16 +26,19 @@
 }
 .navbar-menu {
   list-style: none;
-  margin-top: 20px;
+  margin-top: 35px;
   font-size: 20px;
 }
 .navbar-menu li {
-  padding: 10px 0px;
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
 }
 .navbar-menu a {
   text-decoration: none;
   color: #333;
   transition: 0.3s;
+  margin-left: 15px;
 }
 .navbar-menu a:hover {
   color: #6a933e;

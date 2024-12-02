@@ -9,7 +9,6 @@ export default function SearchTableSection({
 }) {
   const [searchText, setSearchText] = useState("");
   const [titledPlayer, settitledPlayer] = useState("GM");
-  console.log(titledPlayer);
   const navigate = useNavigate();
   const filteredUsers =
     searchText.length >= 3
@@ -34,7 +33,7 @@ export default function SearchTableSection({
             <FiSearch style={{ fontSize: "1.5rem" }} />
             <input
               type="text"
-              placeholder="Search by username..."
+              placeholder="Search by username"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
               className="search-input"
@@ -58,6 +57,9 @@ export default function SearchTableSection({
             <option value="WCM">WCM</option>
           </select>
         </div>
+      </div>
+      <div className="resultsofusers">
+        Results: {filteredUsers.length} Users
       </div>
       {isloading ? (
         <div>
@@ -89,7 +91,7 @@ export default function SearchTableSection({
       ) : (
         <Skeleton
           variant="rectangular"
-          sx={{ borderRadius: "40px" }}
+          sx={{ borderRadius: "40px", mt: "8px" }}
           width={950}
           height={700}
         />

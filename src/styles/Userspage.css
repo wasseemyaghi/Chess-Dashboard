@@ -15,7 +15,15 @@
   border-radius: 50px;
   border: none;
 }
-
+.search-input::placeholder {
+  color: #47453d;
+  opacity: 1;
+  font-weight: 500;
+  line-height: 15.73px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
 .user-table {
   width: 100%;
   border-collapse: separate;
@@ -26,6 +34,7 @@
   border-radius: 30px;
   overflow: hidden;
   border: none;
+  margin-top: 8px;
 }
 
 .user-table th,
@@ -44,6 +53,11 @@
   border-radius: 30px;
   padding: 20px;
   margin-bottom: 30px;
+  position: fixed;
+  width: 63%;
+  top: 0;
+  z-index: 999;
+  margin-top: 20px;
 }
 .searchinputleft {
   width: 40%;
@@ -66,4 +80,12 @@
   background: white;
   padding: 10px 20px;
   border-radius: 50px;
+}
+.resultsofusers {
+  display: flex;
+  justify-content: end;
+  width: 98%;
+  margin-top: 130px;
+  color: #787878;
+  font-weight: 500;
 }
