@@ -1,15 +1,28 @@
 .navbar-logo {
+  display: flex;
+  gap: 20px;
+}
+.navbar-logo-img {
   height: 50px;
   cursor: pointer;
 }
+.navbar-logo-title {
+  font-family: "Jaro", sans-serif;
+  font-size: 30px;
+}
 .navbar {
-  width: 300px;
+  width: 360px;
   position: fixed;
-  height: 90%;
-  padding: 20px;
-  background-color: white;
-  margin: 30px;
-  border-radius: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 95%;
+  padding: 50px;
+  margin-left: 25px;
+  border-radius: 50px;
+  /* background: var(--background-color); */
+  background: rgba(160, 160, 160, 0.21);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 .navbar-menu {
   list-style: none;

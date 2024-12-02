@@ -6,7 +6,14 @@ export default function Navbar() {
   return (
     // <div className="container">
     <nav className="navbar">
-      <img src={logo} alt="Logo" className="navbar-logo" />
+      <div className="navbar-logo">
+        <div>
+          <img src={logo} alt="Logo" className="navbar-logo-img" />
+        </div>
+        <div className="navbar-logo-title">
+          <span>Chess Records</span>
+        </div>
+      </div>
       <ul className="navbar-menu">
         <li>
           <Link to="/">Users</Link>

@@ -1,50 +1,69 @@
 .pagetableofdata {
-  margin-left: 250px;
+  margin-left: 300px;
   padding: 20px;
 }
 /* style the table  */
-.search-table {
+/* .search-table {
   margin-top: 20px;
-}
+} */
 
 .search-input {
-  padding: 10px;
+  padding: 5px 15px;
   width: 100%;
-  margin-bottom: 20px;
   font-size: 16px;
   outline: none;
+  border-radius: 50px;
+  border: none;
 }
 
 .user-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  background-color: var(--background-color);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-spacing: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  border: none;
 }
 
 .user-table th,
 .user-table td {
-  padding: 10px;
+  padding: 12px 10px 12px 50px;
   text-align: left;
-  /* border: 1px solid #ddd; */
-  border: 1px solid #6a933e;
+  border: none;
 }
 
-.user-table th {
-  /* background-color: #f4f4f4; */
-  background-color: #6a933e;
-}
 .searchandFilter {
   display: flex;
   justify-content: space-between;
+  background: rgba(160, 160, 160, 0.21);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 30px;
 }
 .searchinputleft {
   width: 40%;
 }
 .filterright {
-  width: 40%;
+  width: 35%;
 }
 .filterright select {
-  width: 70%;
+  width: 90%;
   outline: none;
-  padding: 10px;
+  border: none;
+  padding: 15px 20px;
   margin-left: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
 }

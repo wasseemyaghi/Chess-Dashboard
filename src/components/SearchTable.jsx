@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
-
+import { FiSearch } from "react-icons/fi";
 export default function SearchTableSection({
   users,
   isloading,
@@ -30,17 +30,22 @@ export default function SearchTableSection({
     <div className="search-table">
       <div className="searchandFilter">
         <div className="searchinputleft">
-          <input
-            type="text"
-            placeholder="Search by username..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            className="search-input"
-          />
+          <div className="search-bar">
+            <FiSearch style={{ fontSize: "1.5rem" }} />
+            <input
+              type="text"
+              placeholder="Search by username..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="search-input"
+            />
+          </div>
         </div>
         <div className="filterright">
-          Filter By
           <select value={titledPlayer} onChange={handleTitleChange}>
+            <option value="" disabled selected>
+              Filter By Titled Players
+            </option>
             <option value="GM">GM</option>
             <option value="WGM">WGM</option>
             <option value="IM">IM</option>
@@ -82,7 +87,12 @@ export default function SearchTableSection({
           )}
         </div>
       ) : (
-        <Skeleton variant="rectangular" width={950} height={700} />
+        <Skeleton
+          variant="rectangular"
+          sx={{ borderRadius: "40px" }}
+          width={950}
+          height={700}
+        />
       )}
     </div>
   );

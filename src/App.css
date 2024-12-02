@@ -97,11 +97,12 @@
   padding: 0;
 }
 body {
+  font-family: "Inter", sans-serif;
   background: rgb(233, 231, 231);
-  background: linear-gradient(
-    156deg,
-    rgba(233, 231, 231, 1) 0%,
-    rgba(235, 234, 234, 1) 35%,
-    rgba(255, 242, 185, 1) 100%
-  );
+  background: linear-gradient(156deg, #e9e7e7 0%, #eae9e9 50%, #fff2b9 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+:root {
+  --background-color: rgba(160, 160, 160, 0.21);
 }
