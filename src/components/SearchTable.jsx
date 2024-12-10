@@ -42,7 +42,7 @@ export default function SearchTableSection({
         </div>
         <div className="filterright">
           <select value={titledPlayer} onChange={handleTitleChange}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               Filter By Titled Players
             </option>
             <option value="GM">GM</option>
@@ -75,7 +75,7 @@ export default function SearchTableSection({
                 {filteredUsers.map((user) => (
                   <tr
                     key={user.id}
-                    onClick={() => handleRowClick(user.username)} // Add click handler
+                    onClick={() => handleRowClick(user.username)}
                     style={{ cursor: "pointer" }}
                   >
                     <td>{user.id}</td>

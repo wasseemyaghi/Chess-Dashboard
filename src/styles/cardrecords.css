@@ -1,0 +1,92 @@
+.records-card {
+  width: 320px;
+  height: 312px;
+  border-radius: 50px;
+  background-color: white;
+  padding: 30px;
+  margin-top: 50px;
+}
+.circle-chart {
+  width: 140px;
+  height: 160px;
+}
+
+.circle-chart__background {
+  stroke: #efefef;
+}
+
+.circle-chart__circle {
+  stroke: #ffc61a;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  animation: circle-chart-fill 3s ease-out forwards;
+}
+@keyframes circle-chart-fill {
+  from {
+    stroke-dasharray: 0 100;
+  }
+  to {
+    stroke-dasharray: var(--percentage) var(--circumference);
+  }
+}
+.pourcentage-win {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+.records-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #000000;
+}
+.records-card-timetext,
+.records-card-timeout {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #000000;
+}
+.circle {
+  position: relative;
+}
+.textincircle {
+  position: absolute;
+  top: 36%;
+  padding: 0px 35px;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+}
+.circle-win {
+  width: 10px;
+  height: 10px;
+  background-color: #ffc61a;
+  border-radius: 50%;
+}
+.circle-lose,
+.circle-draw {
+  width: 10px;
+  height: 10px;
+  background-color: #969696;
+  border-radius: 50%;
+}
+.number-win,
+.number-lose,
+.number-draw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.text-win,
+.text-lose,
+.text-draw {
+  font-size: 13px;
+  font-weight: 500;
+}

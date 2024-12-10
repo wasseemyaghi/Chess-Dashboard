@@ -1,47 +1,79 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RiUserFollowFill } from "react-icons/ri";
-import { BiPulse } from "react-icons/bi";
-import { GiPawn } from "react-icons/gi";
-import svg from "../assets/img/profileimg.svg";
-import "../styles/Profilepage.css";
+// import svg from "../assets/img/profileimg.svg";
+import "../styles/profile.css";
+import CardsStats from "../components/CardsStats";
 export default function Profilepage() {
   const { username } = useParams();
   const [profileData, setProfileData] = useState("");
+  const [countrycode, setcountrycode] = useState();
+  const [countrydata, setcountrydata] = useState();
   useEffect(() => {
     fetch(`https://api.chess.com/pub/player/${username}`)
       .then((response) => response.json())
       .then((data) => {
         setProfileData(data);
+        if (data.country) {
+          setcountrycode(data.country);
+        }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [username]);
-  // if (!profileData) {
-  //   return <div></div>;
-  // }
+
+  useEffect(() => {
+    fetch(`${countrycode}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setcountrydata(data);
+      });
+  }, [countrycode]);
+
+  // get last online function
   const getLastOnline = (timestamp) => {
     const now = Math.floor(Date.now() / 1000);
     const difference = now - timestamp;
-
     if (difference < 60) {
-      return "Just now";
-    } else if (difference < 3600) {
-      const minutes = Math.floor(difference / 60);
-      return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
-    } else if (difference < 86400) {
-      const hours = Math.floor(difference / 3600);
-      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+      return "online";
     } else {
-      const days = Math.floor(difference / 86400);
-      return `${days} day${days > 1 ? "s" : ""} ago`;
+      return "offline";
     }
   };
   return (
     <div className="container">
       <div className="profile-page">
-        <div className="cards">
+        <div className="usernameandcountry">
+          <div className="username-section">
+            <span className="username-title">Player Username: {username}</span>
+            <span
+              className={
+                getLastOnline(profileData.last_online) === "online"
+                  ? "status-online"
+                  : "status-offline"
+              }
+            >
+              {getLastOnline(profileData.last_online)}
+            </span>
+          </div>
+          <div className="country-section">
+            <span className="country-name">
+              {countrydata ? countrydata.name : ""}
+            </span>
+            <span className="country-flag-image">
+              {countrydata ? (
+                <img
+                  src={`https://flagsapi.com/${countrydata.code}/flat/64.png`}
+                  alt="flag"
+                />
+              ) : (
+                ""
+              )}
+            </span>
+          </div>
+        </div>
+        <CardsStats username={username} />
+        {/* <div className="cards">
           <div className="card-box1">
             {profileData.avatar ? (
               <img
@@ -52,14 +84,7 @@ export default function Profilepage() {
               <img src={svg} alt="Default profile" className="default-image" />
             )}
           </div>
-          <div className="card-box2">
-            {/* <img src="https://flagsapi.com/CN/flat/64.png" /> */}
-          </div>
-          <div className="card-box3">time tracker</div>
-          <div className="card-box4">time tracker</div>
-          <div className="card-box5">time tracker</div>
-          <div className="card-box6">time tracker</div>
-        </div>
+        </div> */}
         {/* <div className="profile-page-image">
           {profileData.avatar ? (
             <img

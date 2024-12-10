@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import SearchTableSection from "../components/SearchTable";
-import "../styles/Userspage.css";
+import "../styles/users.css";
 
 export default function Homepage() {
   const [users, setUsers] = useState([]);

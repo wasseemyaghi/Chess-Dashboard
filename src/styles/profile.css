@@ -85,7 +85,50 @@
 }
 .card-box6 {
   grid-area: 2 / 2 / 3 / 4;
-  background-color: #5d2f2d;
+  /* background-color: #5d2f2d; */
   border-radius: 20px;
   padding: 10px;
+}
+.usernameandcountry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.username-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.username-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.status-online {
+  background-color: #41dd6d;
+  color: #303030;
+  padding: 5px 20px;
+  border-radius: 40px;
+}
+.status-offline {
+  background-color: gray;
+  color: #303030;
+  padding: 5px 20px;
+  border-radius: 40px;
+}
+.country-section {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 28px;
+}
+.country-flag-image img {
+  width: 52px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.country-name {
+  width: 40%;
 }
