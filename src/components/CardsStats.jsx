@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import CardRecords from "../components/CardRecords";
+import CardBest from "./CardBest";
+import CardLast from "./CardLast";
+import CardTournament from "./CardTournament";
 import FilterCards from "./FilterCards";
 import { useParams } from "react-router-dom";
+import "../styles/cardstats.css";
 export default function CardsStats() {
   const { username } = useParams();
   const [usernamestats, setusernamestats] = useState();
   const [currentGame, setCurrentGame] = useState("");
-  const [currentStats, setCurrentStats] = useState(null);
+  const [currentRecords, setCurrentRecords] = useState(null);
+  const [currentlastgame, setcurrentlastgame] = useState(null);
+  const [currentBestgame, setcurrentBestgame] = useState(null);
+  const [Tournament, setTournament] = useState(null);
 
   const fetchStatsData = () => {
     fetch(`https://api.chess.com/pub/player/${username}/stats`)
@@ -23,8 +30,10 @@ export default function CardsStats() {
   };
 
   const fetchGameStats = (game, stats) => {
-    setCurrentStats(stats[game]?.record || null);
-    console.log(stats[game]?.record);
+    setCurrentRecords(stats[game]?.record || null);
+    setcurrentlastgame(stats[game]?.last || null);
+    setcurrentBestgame(stats[game]?.best || null);
+    setTournament(stats[game]?.tournament || null);
   };
 
   const statsGameChange = (game) => {
@@ -42,7 +51,14 @@ export default function CardsStats() {
         currentGame={currentGame}
         onGameChange={statsGameChange}
       />
-      <CardRecords statsrecords={currentStats} />
+      <div className="cardstatsflex">
+        <CardRecords statsrecords={currentRecords} />
+        <div>
+          <CardLast lastgame={currentlastgame} />
+          <CardBest bestgame={currentBestgame} />
+        </div>
+        <CardTournament tournament={Tournament} />
+      </div>
     </>
   );
 }

@@ -16,7 +16,7 @@ export default function FilterCards(props) {
     <>
       <div className="filterBygame">
         <div className="nameofgame">{props.currentGame}</div>
-        <div>
+        <div className="selectgame-filter">
           <select value={props.currentGame} onChange={handlegameChange}>
             {keynamegame &&
               keynamegame.map((keyname, index) => {

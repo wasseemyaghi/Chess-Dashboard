@@ -1,0 +1,27 @@
+.tournament-section {
+  background-color: #303030;
+  color: white;
+  width: 200px;
+  height: 312px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tournament-title {
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.tournament-image {
+  margin-bottom: 20px;
+}
+.tournament-count {
+  margin-bottom: 10px;
+}
+.tournament-draw {
+  margin-bottom: 10px;
+}
+.tournament-point {
+  margin-bottom: 10px;
+}

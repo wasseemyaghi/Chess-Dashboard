@@ -72,7 +72,7 @@ export default function Profilepage() {
             </span>
           </div>
         </div>
-        <CardsStats username={username} />
+        <CardsStats />
         {/* <div className="cards">
           <div className="card-box1">
             {profileData.avatar ? (

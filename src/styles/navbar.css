@@ -19,7 +19,6 @@
   padding: 50px;
   margin-left: 25px;
   border-radius: 50px;
-  /* background: var(--background-color); */
   background: rgba(160, 160, 160, 0.21);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
