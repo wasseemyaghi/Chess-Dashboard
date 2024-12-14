@@ -6,6 +6,7 @@ import CardTournament from "./CardTournament";
 import FilterCards from "./FilterCards";
 import { useParams } from "react-router-dom";
 import "../styles/cardstats.css";
+
 export default function CardsStats() {
   const { username } = useParams();
   const [usernamestats, setusernamestats] = useState();
@@ -14,8 +15,10 @@ export default function CardsStats() {
   const [currentlastgame, setcurrentlastgame] = useState(null);
   const [currentBestgame, setcurrentBestgame] = useState(null);
   const [Tournament, setTournament] = useState(null);
+  const [isloading, setisloading] = useState(false);
 
   const fetchStatsData = () => {
+    setisloading(false);
     fetch(`https://api.chess.com/pub/player/${username}/stats`)
       .then((response) => response.json())
       .then((data) => {
@@ -25,6 +28,7 @@ export default function CardsStats() {
           setCurrentGame(firstGame);
           fetchGameStats(firstGame, data);
         }
+        setisloading(true);
       })
       .catch((error) => console.error("Error fetching stats:", error));
   };
@@ -44,6 +48,7 @@ export default function CardsStats() {
   useEffect(() => {
     fetchStatsData();
   }, [username]);
+
   return (
     <>
       <FilterCards
@@ -52,7 +57,11 @@ export default function CardsStats() {
         onGameChange={statsGameChange}
       />
       <div className="cardstatsflex">
-        <CardRecords statsrecords={currentRecords} />
+        <CardRecords
+          statsrecords={currentRecords}
+          isloading={isloading}
+          currentGame={currentGame}
+        />
         <div>
           <CardLast lastgame={currentlastgame} />
           <CardBest bestgame={currentBestgame} />

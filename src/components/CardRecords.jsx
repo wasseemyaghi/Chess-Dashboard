@@ -1,12 +1,16 @@
 import "../styles/cardrecords.css";
+import Skeleton from "@mui/material/Skeleton";
 import React, { useState, useEffect } from "react";
+
 export default function Card(props) {
   const [statsrecords, setstatsrecords] = useState();
   const [totalGames, setTotalGames] = useState(0);
   const [wonGames, setWonGames] = useState(0);
+  // const [load, setLoad] = useState(props.isloading);
+
   useEffect(() => {
-    setstatsrecords(props.statsrecords);
     if (props.statsrecords) {
+      setstatsrecords(props.statsrecords);
       const total =
         props.statsrecords.win +
         props.statsrecords.loss +
@@ -16,11 +20,12 @@ export default function Card(props) {
     } else {
       setTotalGames(0);
     }
-  }, [props.statsrecords]);
+  }, [props.currentGame]);
 
   const radius = 15.91549431;
   const circumference = 2 * Math.PI * radius;
   const percentage = (wonGames / totalGames) * 100;
+
   return (
     <div className="records-card">
       <div className="records-card-title">Records</div>
@@ -47,7 +52,16 @@ export default function Card(props) {
             strokeLinejoin="round"
           />
         </svg>
-        Time per move: 1200
+        Time per move:{" "}
+        {props.isloading ? (
+          statsrecords && statsrecords.time_per_move ? (
+            statsrecords.time_per_move
+          ) : (
+            "-"
+          )
+        ) : (
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
+        )}
       </div>
       <div className="records-card-timeout">
         <svg
@@ -86,61 +100,86 @@ export default function Card(props) {
             strokeLinejoin="round"
           />
         </svg>
-        Timeout Percentage: 15%
+        Timeout Percentage:{" "}
+        {props.isloading ? (
+          statsrecords && statsrecords.timeout_percent ? (
+            statsrecords.timeout_percent
+          ) : (
+            "-"
+          )
+        ) : (
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
+        )}
       </div>
       <div className="pourcentage-win">
-        <div className="circle">
-          <svg
-            key={percentage}
-            className="circle-chart"
-            viewBox="0 0 36 36"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{
-              "--percentage": `${percentage}px`,
-              "--circumference": `${circumference}px`,
-            }}
-          >
-            <circle
-              className="circle-chart__background"
-              stroke="#efefef"
-              strokeWidth="3.5"
-              fill="none"
-              cx="18"
-              cy="18"
-              r="16"
-            />
-            <circle
-              className="circle-chart__circle"
-              stroke="#FFC61A"
-              strokeWidth="3.5"
-              strokeDasharray={`${percentage} ${circumference}`}
-              strokeLinecap="round"
-              fill="none"
-              cx="18"
-              cy="18"
-              r="16"
-            />
-          </svg>
-          <div className="textincircle">{totalGames} Games</div>
-        </div>
+        {props.isloading ? (
+          <div className="circle">
+            <svg
+              key={percentage}
+              className="circle-chart"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{
+                "--percentage": `${percentage}px`,
+                "--circumference": `${circumference}px`,
+              }}
+            >
+              <circle
+                className="circle-chart__background"
+                stroke="#efefef"
+                strokeWidth="3.5"
+                fill="none"
+                cx="18"
+                cy="18"
+                r="16"
+              />
+              <circle
+                className="circle-chart__circle"
+                stroke="#FFC61A"
+                strokeWidth="3.5"
+                strokeDasharray={`${percentage} ${circumference}`}
+                strokeLinecap="round"
+                fill="none"
+                cx="18"
+                cy="18"
+                r="16"
+              />
+            </svg>
+            <div className="textincircle">{totalGames} Games</div>
+          </div>
+        ) : (
+          <Skeleton variant="circular" width={140} height={140} />
+        )}
         <div className="numberonleft">
           <div className="number-win">
             <div className="circle-win"></div>
-            <div className="text-win">
-              {statsrecords ? statsrecords.win : 0} Win
-            </div>
+            {props.isloading ? (
+              <div className="text-win">
+                {statsrecords ? statsrecords.win : 0} Win
+              </div>
+            ) : (
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
+            )}
           </div>
           <div className="number-lose">
             <div className="circle-lose"></div>
-            <div className="text-lose">
-              {statsrecords ? statsrecords.loss : 0} Loss
-            </div>
+            {props.isloading ? (
+              <div className="text-lose">
+                {statsrecords ? statsrecords.loss : 0} Loss
+              </div>
+            ) : (
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
+            )}
           </div>
           <div className="number-draw">
             <div className="circle-draw"></div>
-            <div className="text-draw">
-              {statsrecords ? statsrecords.draw : 0} Withdraw
-            </div>
+            {props.isloading ? (
+              <div className="text-draw">
+                {statsrecords ? statsrecords.draw : 0} Withdraw
+              </div>
+            ) : (
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
+            )}
           </div>
         </div>
       </div>
