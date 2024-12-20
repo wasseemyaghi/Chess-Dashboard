@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 // import svg from "../assets/img/profileimg.svg";
 import "../styles/profile.css";
 import CardsStats from "../components/CardsStats";
+import ClubsTable from "../components/ClubsTable";
 export default function Profilepage() {
   const { username } = useParams();
   const [profileData, setProfileData] = useState("");
@@ -73,6 +74,7 @@ export default function Profilepage() {
           </div>
         </div>
         <CardsStats />
+        <ClubsTable />
         {/* <div className="cards">
           <div className="card-box1">
             {profileData.avatar ? (

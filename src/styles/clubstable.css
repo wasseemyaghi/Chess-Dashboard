@@ -1,0 +1,18 @@
+.bodyTable {
+  background: rgba(160, 160, 160, 0.21);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+.club-icon img {
+  object-fit: cover;
+  width: 45px;
+  border-radius: 50%;
+}
+.club-row {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+.club-row .club-id {
+  padding: 15px 30px;
+}

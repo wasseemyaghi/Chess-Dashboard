@@ -32,6 +32,7 @@ export default function SearchTableSection({
           <div className="search-bar">
             <FiSearch style={{ fontSize: "1.5rem" }} />
             <input
+              id="search-input"
               type="text"
               placeholder="Search by username"
               value={searchText}

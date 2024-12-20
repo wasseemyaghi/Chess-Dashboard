@@ -6,7 +6,6 @@ export default function Card(props) {
   const [statsrecords, setstatsrecords] = useState();
   const [totalGames, setTotalGames] = useState(0);
   const [wonGames, setWonGames] = useState(0);
-  // const [load, setLoad] = useState(props.isloading);
 
   useEffect(() => {
     if (props.statsrecords) {
@@ -18,7 +17,9 @@ export default function Card(props) {
       setTotalGames(total);
       setWonGames(props.statsrecords.win);
     } else {
+      setstatsrecords(null);
       setTotalGames(0);
+      setWonGames(0);
     }
   }, [props.currentGame]);
 

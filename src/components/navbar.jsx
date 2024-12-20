@@ -28,7 +28,7 @@ export default function Navbar() {
         </li>
         <li>
           <img src={svglinkthree} alt="svglinkimage" />
-          <Link to="#">Search For Users</Link>
+          <Link to="/#search-input">Search For Users</Link>
         </li>
       </ul>
     </nav>

@@ -49,14 +49,14 @@ export default function CardBest(props) {
         <div className="content-bestgame"></div>
         <div className="content-bestgame"></div>
         <div className="content-card-bestgamethree">
-          {BestGame ? new Date(BestGame.date * 1000).toDateString() : 0}
+          {BestGame?.date ? new Date(BestGame.date * 1000).toDateString() : 0}
         </div>
         <div className="content-bestgame"></div>
         <div className="content-bestgame"></div>
       </div>
       <div className="lastcontent-bestgame">
         <div className="bestrating">Best Rating 🎉</div>
-        <div>Rating: {BestGame ? BestGame.rating : 0}</div>
+        <div>Rating: {BestGame?.rating || "0"}</div>
       </div>
     </div>
   );
