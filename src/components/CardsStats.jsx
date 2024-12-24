@@ -14,7 +14,7 @@ export default function CardsStats() {
   const [currentRecords, setCurrentRecords] = useState(null);
   const [currentlastgame, setcurrentlastgame] = useState(null);
   const [currentBestgame, setcurrentBestgame] = useState(null);
-  const [Tournament, setTournament] = useState(null);
+  const [tournament, setTournament] = useState(null);
   const [isloading, setisloading] = useState(false);
 
   const fetchStatsData = () => {
@@ -41,8 +41,12 @@ export default function CardsStats() {
   };
 
   const statsGameChange = (game) => {
+    setisloading(false);
     setCurrentGame(game);
-    fetchGameStats(game, usernamestats);
+    setTimeout(() => {
+      fetchGameStats(game, usernamestats);
+      setisloading(true);
+    }, 500);
   };
 
   useEffect(() => {
@@ -57,16 +61,12 @@ export default function CardsStats() {
         onGameChange={statsGameChange}
       />
       <div className="cardstatsflex">
-        <CardRecords
-          statsrecords={currentRecords}
-          isloading={isloading}
-          currentGame={currentGame}
-        />
+        <CardRecords statsrecords={currentRecords} isloading={isloading} />
         <div>
-          <CardLast lastgame={currentlastgame} />
-          <CardBest bestgame={currentBestgame} />
+          <CardLast lastgame={currentlastgame} isloading={isloading} />
+          <CardBest bestgame={currentBestgame} isloading={isloading} />
         </div>
-        <CardTournament tournament={Tournament} />
+        <CardTournament tournament={tournament} isloading={isloading} />
       </div>
     </>
   );

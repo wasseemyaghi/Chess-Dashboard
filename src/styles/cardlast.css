@@ -60,3 +60,6 @@
   background: rgba(255, 255, 255, 0.21);
   box-shadow: 2px 2px 100px 0px #3030300d; */
 }
+.lastGame-rating {
+  display: flex;
+}

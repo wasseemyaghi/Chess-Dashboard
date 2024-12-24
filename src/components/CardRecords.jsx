@@ -21,7 +21,7 @@ export default function Card(props) {
       setTotalGames(0);
       setWonGames(0);
     }
-  }, [props.currentGame]);
+  }, [props.statsrecords]);
 
   const radius = 15.91549431;
   const circumference = 2 * Math.PI * radius;

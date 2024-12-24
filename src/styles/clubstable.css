@@ -16,3 +16,10 @@
 .club-row .club-id {
   padding: 15px 30px;
 }
+.Go-to-club {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}

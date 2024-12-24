@@ -15,7 +15,12 @@ export default function FilterCards(props) {
   return (
     <>
       <div className="filterBygame">
-        <div className="nameofgame">{props.currentGame}</div>
+        <div className="nameofgame">
+          {props.currentGame
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}
+        </div>
         <div className="selectgame-filter">
           <select value={props.currentGame} onChange={handlegameChange}>
             {keynamegame &&

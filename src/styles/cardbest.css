@@ -20,6 +20,9 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  text-decoration: none;
+  color: #303030;
+  cursor: pointer;
 }
 .content-card-bestgame {
   display: flex;
@@ -59,4 +62,7 @@
   background-color: #ffc61a;
   border-radius: 10px;
   padding: 4px 18px;
+}
+.bestgame-rating {
+  display: flex;
 }
