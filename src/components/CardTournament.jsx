@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import tournamentsvg from "../assets/img/tournamentsvg.svg";
+
 import Skeleton from "@mui/material/Skeleton";
+
 import "../styles/cardtournament.css";
+import tournamentsvg from "../assets/img/tournamentsvg.svg";
+
 export default function CardTournament(props) {
-  const [Tournament, setTournament] = useState(null);
+  const [tournamentData, setTournamentData] = useState(null);
+  const { tournament, isloading } = props;
   useEffect(() => {
-    setTournament(props.tournament);
-  }, [props.tournament]);
+    setTournamentData(tournament);
+  }, [tournament]);
+
   return (
     <>
       <div className="tournament-section">
@@ -14,9 +19,9 @@ export default function CardTournament(props) {
         <div className="tournament-image">
           <img src={tournamentsvg} alt="tournamentsvg" />
         </div>
-        {props.isloading ? (
+        {isloading ? (
           <div className="tournament-count">
-            Count: {Tournament ? Tournament.points : 0}
+            Count: {tournamentData ? tournamentData.points : 0}
           </div>
         ) : (
           <Skeleton
@@ -26,9 +31,9 @@ export default function CardTournament(props) {
             height={30}
           />
         )}
-        {props.isloading ? (
+        {isloading ? (
           <div className="tournament-draw">
-            Withdraw: {Tournament ? Tournament.withdraw : 0}
+            Withdraw: {tournamentData ? tournamentData.withdraw : 0}
           </div>
         ) : (
           <Skeleton
@@ -38,9 +43,9 @@ export default function CardTournament(props) {
             height={30}
           />
         )}
-        {props.isloading ? (
+        {isloading ? (
           <div className="tournament-point">
-            Points: {Tournament ? Tournament.count : 0}
+            Points: {tournamentData?.count || 0}
           </div>
         ) : (
           <Skeleton

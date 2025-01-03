@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import svg from "../assets/img/profileimg.svg";
-import "../styles/profile.css";
+
 import CardsStats from "../components/CardsStats";
 import ClubsTable from "../components/ClubsTable";
+
+import "../styles/profile.css";
+
 export default function Profilepage() {
   const { username } = useParams();
   const [profileData, setProfileData] = useState("");
   const [countrycode, setcountrycode] = useState();
   const [countrydata, setcountrydata] = useState();
+
   useEffect(() => {
-    fetch(`https://api.chess.com/pub/player/${username}`)
+    fetch(`${process.env.REACT_APP_API_base}/player/${username}`)
       .then((response) => response.json())
       .then((data) => {
         setProfileData(data);
@@ -24,23 +27,23 @@ export default function Profilepage() {
   }, [username]);
 
   useEffect(() => {
-    fetch(`${countrycode}`)
+    fetch(countrycode)
       .then((response) => response.json())
       .then((data) => {
         setcountrydata(data);
       });
   }, [countrycode]);
 
-  // get last online function
   const getLastOnline = (timestamp) => {
     const now = Math.floor(Date.now() / 1000);
     const difference = now - timestamp;
-    if (difference < 60) {
+    if (difference < 300) {
       return "online";
     } else {
       return "offline";
     }
   };
+
   return (
     <div className="container">
       <div className="profile-page">
@@ -48,23 +51,21 @@ export default function Profilepage() {
           <div className="username-section">
             <span className="username-title">Player Username: {username}</span>
             <span
-              className={
-                getLastOnline(profileData.last_online) === "online"
-                  ? "status-online"
-                  : "status-offline"
-              }
+              className={`status-${getLastOnline(profileData?.last_online)}`}
             >
-              {getLastOnline(profileData.last_online)}
+              {getLastOnline(profileData?.last_online)}
             </span>
           </div>
           <div className="country-section">
-            <span className="country-name">
-              {countrydata ? countrydata.name : ""}
-            </span>
+            <span className="country-name">{countrydata?.name}</span>
             <span className="country-flag-image">
               {countrydata ? (
                 <img
                   src={`https://flagsapi.com/${countrydata.code}/flat/64.png`}
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null;
+                    currentTarget.style.display = "none";
+                  }}
                   alt="flag"
                 />
               ) : (

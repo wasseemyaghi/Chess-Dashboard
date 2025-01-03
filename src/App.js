@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Userspage from "./pages/Users";
 import Profilepage from "./pages/Profile";
+
 import "./App.css";
 
 function App() {

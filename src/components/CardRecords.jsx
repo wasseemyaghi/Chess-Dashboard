@@ -1,27 +1,24 @@
-import "../styles/cardrecords.css";
-import Skeleton from "@mui/material/Skeleton";
 import React, { useState, useEffect } from "react";
+import Skeleton from "@mui/material/Skeleton";
+import "../styles/cardrecords.css";
 
-export default function Card(props) {
-  const [statsrecords, setstatsrecords] = useState();
+export default function CardRecords(props) {
+  const [statsRecordsData, setStatsRecordsData] = useState();
   const [totalGames, setTotalGames] = useState(0);
   const [wonGames, setWonGames] = useState(0);
-
+  const { statsrecords, isloading } = props;
   useEffect(() => {
-    if (props.statsrecords) {
-      setstatsrecords(props.statsrecords);
-      const total =
-        props.statsrecords.win +
-        props.statsrecords.loss +
-        props.statsrecords.draw;
+    if (statsrecords) {
+      setStatsRecordsData(statsrecords);
+      const total = statsrecords.win + statsrecords.loss + statsrecords.draw;
       setTotalGames(total);
-      setWonGames(props.statsrecords.win);
+      setWonGames(statsrecords.win);
     } else {
-      setstatsrecords(null);
+      setStatsRecordsData(null);
       setTotalGames(0);
       setWonGames(0);
     }
-  }, [props.statsrecords]);
+  }, [statsrecords]);
 
   const radius = 15.91549431;
   const circumference = 2 * Math.PI * radius;
@@ -54,9 +51,9 @@ export default function Card(props) {
           />
         </svg>
         Time per move:{" "}
-        {props.isloading ? (
-          statsrecords && statsrecords.time_per_move ? (
-            statsrecords.time_per_move
+        {isloading ? (
+          statsRecordsData && statsRecordsData.time_per_move ? (
+            statsRecordsData.time_per_move
           ) : (
             "-"
           )
@@ -102,9 +99,9 @@ export default function Card(props) {
           />
         </svg>
         Timeout Percentage:{" "}
-        {props.isloading ? (
-          statsrecords && statsrecords.timeout_percent ? (
-            statsrecords.timeout_percent
+        {isloading ? (
+          statsRecordsData && statsRecordsData.timeout_percent ? (
+            statsRecordsData.timeout_percent
           ) : (
             "-"
           )
@@ -113,7 +110,7 @@ export default function Card(props) {
         )}
       </div>
       <div className="pourcentage-win">
-        {props.isloading ? (
+        {isloading ? (
           <div className="circle">
             <svg
               key={percentage}
@@ -154,9 +151,9 @@ export default function Card(props) {
         <div className="numberonleft">
           <div className="number-win">
             <div className="circle-win"></div>
-            {props.isloading ? (
+            {isloading ? (
               <div className="text-win">
-                {statsrecords ? statsrecords.win : 0} Win
+                {statsRecordsData ? statsRecordsData.win : 0} Win
               </div>
             ) : (
               <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
@@ -166,7 +163,7 @@ export default function Card(props) {
             <div className="circle-lose"></div>
             {props.isloading ? (
               <div className="text-lose">
-                {statsrecords ? statsrecords.loss : 0} Loss
+                {statsRecordsData ? statsRecordsData.loss : 0} Loss
               </div>
             ) : (
               <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />
@@ -176,7 +173,7 @@ export default function Card(props) {
             <div className="circle-draw"></div>
             {props.isloading ? (
               <div className="text-draw">
-                {statsrecords ? statsrecords.draw : 0} Withdraw
+                {statsRecordsData ? statsRecordsData.draw : 0} Withdraw
               </div>
             ) : (
               <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={80} />

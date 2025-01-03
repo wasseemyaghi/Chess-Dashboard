@@ -1,28 +1,29 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/filtercards.css";
+
 export default function FilterCards(props) {
   const [keynamegame, setkeynamegame] = useState();
-
+  const { gamename, onGameChange, currentGame } = props;
   useEffect(() => {
-    if (props.gamename) {
-      setkeynamegame(Object.keys(props.gamename));
+    if (gamename) {
+      setkeynamegame(Object.keys(gamename));
     }
-  }, [props.gamename]);
+  }, [gamename]);
   const handlegameChange = (e) => {
-    props.onGameChange(e.target.value);
+    onGameChange(e.target.value);
   };
+
   return (
     <>
       <div className="filterBygame">
         <div className="nameofgame">
-          {props.currentGame
+          {currentGame
             .split("_")
             .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
             .join(" ")}
         </div>
         <div className="selectgame-filter">
-          <select value={props.currentGame} onChange={handlegameChange}>
+          <select value={currentGame} onChange={handlegameChange}>
             {keynamegame &&
               keynamegame.map((keyname, index) => {
                 return (

@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
-import Skeleton from "@mui/material/Skeleton";
 import { Link } from "react-router-dom";
-import "../styles/cardbest.css";
+
+import Skeleton from "@mui/material/Skeleton";
+
+import "../styles/bestratingcard.css";
 
 export default function CardBest(props) {
-  const [BestGame, setBestGame] = useState();
+  const [bestGameData, setBestGameData] = useState();
+  const { bestgame, isloading } = props;
+
   useEffect(() => {
-    setBestGame(props.bestgame);
-  }, [props.bestgame]);
+    setBestGameData(bestgame);
+  }, [bestgame]);
+
   return (
     <div className="bestgame-card">
       <div className="bestgame-info">
         <div>Best Rating</div>
         <div>
-          {BestGame && (
-            <Link to={`${BestGame.game}`} className="bestgameinfo-right">
+          {bestGameData && (
+            <Link to={`${bestGameData.game}`} className="bestgameinfo-right">
               <div>Go to Game</div>
               <div>
                 <svg
@@ -54,11 +59,11 @@ export default function CardBest(props) {
       <div className="content-card-bestgame">
         <div className="content-bestgame"></div>
         <div className="content-bestgame"></div>
-        {props.isloading ? (
-          BestGame ? (
+        {isloading ? (
+          bestGameData ? (
             <div className="content-card-bestgamethree">
-              {BestGame?.date
-                ? new Date(BestGame.date * 1000).toDateString()
+              {bestGameData?.date
+                ? new Date(bestGameData.date * 1000).toDateString()
                 : 0}
             </div>
           ) : (
@@ -79,8 +84,8 @@ export default function CardBest(props) {
         <div className="bestrating">Best Rating 🎉</div>
         <div className="bestgame-rating">
           Rating:
-          {props.isloading ? (
-            BestGame?.rating || "0"
+          {isloading ? (
+            bestGameData?.rating || "0"
           ) : (
             <Skeleton variant="text" sx={{ fontSize: "1rem" }} width={40} />
           )}

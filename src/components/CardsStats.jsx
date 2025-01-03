@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import CardRecords from "../components/CardRecords";
-import CardBest from "./CardBest";
-import CardLast from "./CardLast";
+import { useParams } from "react-router-dom";
+
+import CardRecords from "./CardRecords";
+import BestRatingCard from "./BestRatingCard";
+import LastGameCard from "./LastGameCard";
 import CardTournament from "./CardTournament";
 import FilterCards from "./FilterCards";
-import { useParams } from "react-router-dom";
+
 import "../styles/cardstats.css";
 
 export default function CardsStats() {
@@ -63,8 +65,8 @@ export default function CardsStats() {
       <div className="cardstatsflex">
         <CardRecords statsrecords={currentRecords} isloading={isloading} />
         <div>
-          <CardLast lastgame={currentlastgame} isloading={isloading} />
-          <CardBest bestgame={currentBestgame} isloading={isloading} />
+          <LastGameCard lastgame={currentlastgame} isloading={isloading} />
+          <BestRatingCard bestgame={currentBestgame} isloading={isloading} />
         </div>
         <CardTournament tournament={tournament} isloading={isloading} />
       </div>

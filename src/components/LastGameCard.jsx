@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "@mui/material/Skeleton";
-import "../styles/cardlast.css";
+import "../styles/lastgamecard.css";
+
 export default function CardLast(props) {
-  const [lastGame, setLastGame] = useState();
+  const [lastGameData, setLastGameData] = useState();
+  const { lastgame, isloading } = props;
   useEffect(() => {
-    setLastGame(props.lastgame);
-  }, [props.lastgame]);
+    setLastGameData(lastgame);
+  }, [lastgame]);
+
   return (
     <div className="lastgame-card">
       <div className="lastgame-info">
         <div>Last Game</div>
         <div className="lastGame-rating">
           Rating:
-          {props.isloading ? (
-            lastGame ? (
-              lastGame.rating
+          {isloading ? (
+            lastGameData ? (
+              lastGameData.rating
             ) : (
               0
             )
@@ -26,10 +29,12 @@ export default function CardLast(props) {
       <div className="content-card">
         <div className="content-card-one"></div>
         <div className="content-card-two"></div>
-        {props.isloading ? (
-          lastGame ? (
+        {isloading ? (
+          lastGameData ? (
             <div className="content-card-three">
-              {lastGame ? new Date(lastGame.date * 1000).toDateString() : 0}
+              {lastGameData
+                ? new Date(lastGameData.date * 1000).toDateString()
+                : 0}
             </div>
           ) : (
             <div className="content-card-three">0</div>

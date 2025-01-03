@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import Skeleton from "@mui/material/Skeleton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,11 +9,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useParams } from "react-router-dom";
+
 import "../styles/clubstable.css";
+
 export default function ClubsTable() {
   const { username } = useParams();
   const [usernameclubs, setUsernameClubs] = useState();
+
   useEffect(() => {
     fetch(`https://api.chess.com/pub/player/${username}/clubs`)
       .then((response) => response.json())
@@ -20,6 +24,7 @@ export default function ClubsTable() {
       })
       .catch((error) => console.error("Error fetching stats:", error));
   }, [username]);
+
   return (
     <>
       <TableContainer component={Paper} sx={{ borderRadius: 10, mt: 8 }}>
@@ -171,7 +176,7 @@ export default function ClubsTable() {
               </>
             ) : (
               usernameclubs.clubs.map((club, index) => (
-                <TableRow key={club.id} sx={{ border: 0 }} className="club-row">
+                <TableRow key={index} sx={{ border: 0 }} className="club-row">
                   <TableCell
                     align="center"
                     sx={{ border: 0 }}

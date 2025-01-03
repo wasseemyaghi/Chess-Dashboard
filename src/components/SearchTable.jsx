@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Skeleton from "@mui/material/Skeleton";
 import { FiSearch } from "react-icons/fi";
-export default function SearchTableSection({
-  users,
-  isloading,
-  onTitleChange,
-}) {
+
+export default function SearchTable(props) {
   const [searchText, setSearchText] = useState("");
   const [titledPlayer, settitledPlayer] = useState("GM");
+  const { users, isloading, onTitleChange } = props;
   const navigate = useNavigate();
   const filteredUsers =
     searchText.length >= 3

@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/navbar.css";
+
+import ChessBoard from "../assets/img/chessboard.svg";
+import Tournament from "../assets/img/tournament.svg";
+import SearchPawn from "../assets/img/searchpawn.svg";
 import logo from "../assets/img/Chess_Records_Logo 1.png";
-import svglinkone from "../assets/img/img-link-one.svg";
-import svglinktwo from "../assets/img/img-link-two.svg";
-import svglinkthree from "../assets/img/img-link-three.svg";
+import "../styles/navbar.css";
+
 export default function Navbar() {
   return (
-    // <div className="container">
     <nav className="navbar">
       <div className="navbar-logo">
         <div>
@@ -19,19 +20,18 @@ export default function Navbar() {
       </div>
       <ul className="navbar-menu">
         <li>
-          <img src={svglinkone} alt="svglinkimage" />
+          <img src={ChessBoard} alt="svglinkimage" />
           <Link to="/">All Chess Players</Link>
         </li>
         <li>
-          <img src={svglinktwo} alt="svglinkimage" />
+          <img src={Tournament} alt="svglinkimage" />
           <Link to="#">Chess Clubs</Link>
         </li>
         <li>
-          <img src={svglinkthree} alt="svglinkimage" />
+          <img src={SearchPawn} alt="svglinkimage" />
           <Link to="/#search-input">Search For Users</Link>
         </li>
       </ul>
     </nav>
-    // </div>
   );
 }
