@@ -1,0 +1,83 @@
+.clubnamecard {
+  position: relative;
+  width: 60%;
+  height: 365px;
+  border-radius: 30px;
+  background-color: #ffffff36;
+}
+.club_card {
+  height: 65px;
+  background-color: #d9d9d9;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.club_card_circle {
+  background-color: #d9d9d9;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid #000000;
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  transform: translateX(-50%);
+}
+.club_card_name {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  transform: translateX(-50%);
+}
+.club_card_name_title {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+.club_card_date {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7f7f7f;
+  text-align: center;
+}
+.club_card_info {
+  position: absolute;
+  top: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.club_card_width {
+  width: 48%;
+}
+.club_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0px;
+}
+.club_info_dotted {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.club_info_dotted span {
+  width: 6px;
+  height: 3px;
+  border-bottom: 2px solid #7f7f7f;
+}
+.club_info_data {
+  font-size: 15px;
+  font-weight: 500;
+  color: #7f7f7f;
+}
+.club_info_card_name {
+  font-size: 15px;
+  font-weight: 500;
+}
+.club_info_data_link {
+  color: #7f7f7f;
+  cursor: pointer;
+}

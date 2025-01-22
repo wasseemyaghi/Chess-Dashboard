@@ -1,0 +1,21 @@
+.club-page {
+  margin-left: 300px;
+  margin-top: 20px;
+}
+.club {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.club_name {
+  font-size: 24px;
+  font-weight: 500;
+}
+.btn_join button {
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: #ffc61a;
+  color: #303030;
+  border: none;
+  cursor: pointer;
+}

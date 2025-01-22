@@ -3,17 +3,17 @@
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 }
-.club-icon img {
+.player__club-icon img {
   object-fit: cover;
   width: 45px;
   border-radius: 50%;
 }
-.club-row {
+.player__club-row {
   font-size: 15px;
   font-weight: 500;
   text-align: left;
 }
-.club-row .club-id {
+.player__club-row .player__club-id {
   padding: 15px 30px;
 }
 .Go-to-club {

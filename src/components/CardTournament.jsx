@@ -8,6 +8,7 @@ import tournamentsvg from "../assets/img/tournamentsvg.svg";
 export default function CardTournament(props) {
   const [tournamentData, setTournamentData] = useState(null);
   const { tournament, isloading } = props;
+
   useEffect(() => {
     setTournamentData(tournament);
   }, [tournament]);
@@ -21,7 +22,7 @@ export default function CardTournament(props) {
         </div>
         {isloading ? (
           <div className="tournament-count">
-            Count: {tournamentData ? tournamentData.points : 0}
+            Count: {tournamentData?.points || 0}
           </div>
         ) : (
           <Skeleton
@@ -33,7 +34,7 @@ export default function CardTournament(props) {
         )}
         {isloading ? (
           <div className="tournament-draw">
-            Withdraw: {tournamentData ? tournamentData.withdraw : 0}
+            Withdraw: {tournamentData?.withdraw || 0}
           </div>
         ) : (
           <Skeleton
