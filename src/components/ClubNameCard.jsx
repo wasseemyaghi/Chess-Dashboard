@@ -6,6 +6,7 @@ import lastactivityicon from "../assets/img/clubcardname_lastactivityicon.svg";
 import visibilityicon from "../assets/img/clubcardname_visibilityicon.svg";
 import dailyratingicon from "../assets/img/clubcardname_dailyratingicon.svg";
 import linkicon from "../assets/img/clubcardname_linkicon.svg";
+import Skeleton from "@mui/material/Skeleton";
 import "../styles/clubnamecard.css";
 export default function ClubNameCard(props) {
   const [clubCardName, setclubCardName] = useState();
@@ -21,11 +22,26 @@ export default function ClubNameCard(props) {
           <div className="club_card_circle"></div>
           <div className="club_card_name">
             <span className="club_card_name_title">
-              {clubCardName && clubCardName.name}
+              {clubCardName ? (
+                clubCardName.name
+              ) : (
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "1rem" }}
+                  width={240}
+                />
+              )}
             </span>
             <span className="club_card_date">
-              {clubCardName &&
-                new Date(clubCardName.last_activity * 1000).toDateString()}
+              {clubCardName ? (
+                new Date(clubCardName.last_activity * 1000).toDateString()
+              ) : (
+                <Skeleton
+                  variant="text"
+                  sx={{ fontSize: "1rem", display: "block", margin: "0 auto" }}
+                  width={150}
+                />
+              )}
             </span>
           </div>
         </div>
@@ -42,8 +58,18 @@ export default function ClubNameCard(props) {
                 <span></span>
                 <span></span>
                 <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-              <div className="club_info_data">Canada, Torronto</div>
+              <div className="club_info_data">(-)</div>
             </div>
             <div className="club_info">
               <div className="club_info_members_img">
@@ -65,7 +91,15 @@ export default function ClubNameCard(props) {
                 <span></span>
               </div>
               <div className="club_info_data">
-                {clubCardName && clubCardName.members_count}
+                {clubCardName ? (
+                  clubCardName.members_count
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={50}
+                  />
+                )}
               </div>
             </div>
             <div className="club_info">
@@ -79,8 +113,15 @@ export default function ClubNameCard(props) {
                 <span></span>
               </div>
               <div className="club_info_data">
-                {clubCardName &&
-                  new Date(clubCardName.last_activity * 1000).toDateString()}
+                {clubCardName ? (
+                  new Date(clubCardName.last_activity * 1000).toDateString()
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={120}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -104,7 +145,15 @@ export default function ClubNameCard(props) {
                 <span></span>
               </div>
               <div className="club_info_data">
-                {clubCardName && clubCardName.visibility}
+                {clubCardName ? (
+                  clubCardName.visibility
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={50}
+                  />
+                )}
               </div>
             </div>
             <div className="club_info">
@@ -119,7 +168,15 @@ export default function ClubNameCard(props) {
                 <span></span>
               </div>
               <div className="club_info_data">
-                {clubCardName && clubCardName.average_daily_rating}
+                {clubCardName ? (
+                  clubCardName.average_daily_rating
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={60}
+                  />
+                )}
               </div>
             </div>
             <div className="club_info">
@@ -136,13 +193,19 @@ export default function ClubNameCard(props) {
                 <span></span>
               </div>
               <div className="club_info_data">
-                {clubCardName && (
+                {clubCardName ? (
                   <Link
                     to={`${clubCardName.url}`}
                     className="club_info_data_link"
                   >
                     Link To Club
                   </Link>
+                ) : (
+                  <Skeleton
+                    variant="text"
+                    sx={{ fontSize: "1rem" }}
+                    width={100}
+                  />
                 )}
               </div>
             </div>

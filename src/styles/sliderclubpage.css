@@ -1,0 +1,51 @@
+/* .clubmatches {
+  width: 37%;
+} */
+.clubmatchescard-vs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.clubmatches-title {
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.clubmatchescard {
+  padding: 40px 20px;
+  border-radius: 30px;
+  background-color: #ffffff36;
+  margin-bottom: 20px;
+  width: 370px;
+}
+.first-team-name,
+.second-team-name {
+  text-align: center;
+}
+.vs-text {
+  font-size: 20px;
+  font-weight: 900;
+}
+.svg-text {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: end;
+}
+.club-matches-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0px;
+  margin-top: 15px;
+}
+.titlecard-expanded {
+  width: 370px;
+  border-radius: 30px;
+  background-color: #ffffff36;
+  padding: 20px 15px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+}

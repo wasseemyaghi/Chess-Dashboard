@@ -19,3 +19,8 @@
   border: none;
   cursor: pointer;
 }
+.club-cards-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
